@@ -1,1 +1,207 @@
-<iframe src="http://localhost:3000/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_19C8Z&utm_source=default" style="width:100%;height:100%;border:0;"></iframe>
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Revolut Referral Embed</title>
+  <style>
+    html,body {
+      height: 100%;
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: #f6f8fb;
+      color: #0f172a;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 12px 16px;
+      background: linear-gradient(90deg,#4f46e5,#06b6d4);
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 2px 6px rgba(2,6,23,0.08);
+    }
+
+    header h1 {
+      font-size: 16px;
+      margin: 0;
+      line-height: 1;
+    }
+
+    .container {
+      flex: 1 1 auto;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 12px;
+      padding: 12px;
+    }
+
+    .frame-wrap {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 6px 20px rgba(2,6,23,0.08);
+      min-height: 320px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 70vh;
+      min-height: 480px;
+      border: 0;
+      display: block;
+    }
+
+    .fallback {
+      position: absolute;
+      inset: 12px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: rgba(255,255,255,0.95);
+      gap: 10px;
+      padding: 18px;
+      border-radius: 8px;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+    }
+
+    .fallback.visible {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: #0ea5e9;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer {
+      font-size: 13px;
+      color: #334155;
+      padding: 8px 4px;
+      text-align: center;
+    }
+
+    .note {
+      font-size: 13px;
+      color: #475569;
+      margin: 6px 0 0 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <rect x="2" y="2" width="20" height="20" rx="5" fill="white" opacity="0.12"/>
+      <path d="M7 12h10M7 8h10M7 16h6" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <h1>Revolut-Referral (eingebettet)</h1>
+  </header>
+
+  <main class="container">
+    <div class="frame-wrap" id="frameWrap">
+      <!-- Iframe: hier die Ziel-URL -->
+      <iframe id="embedFrame"
+              src="https://revolut.com/referral/?referral-code=viktorx5iz!NOV1-25-VR-DE&geo-redirect"
+              title="Revolut Referral"
+              loading="lazy"
+              sandbox="allow-same-origin allow-forms allow-popups allow-scripts">
+      </iframe>
+
+      <!-- Fallback, falls Einbettung blockiert wird -->
+      <div id="fallback" class="fallback" role="alert">
+        <div>
+          <strong>Einbettung blockiert oder nicht verfügbar.</strong>
+          <p class="note">Einige Webseiten verhindern aus Sicherheitsgründen das Einbetten in iframes (z. B. über X-Frame-Options oder Content-Security-Policy).</p>
+          <p style="margin-top:8px;">
+            <a id="openLink" class="btn" href="#" target="_blank" rel="noopener noreferrer">Revolut-Seite in neuem Tab öffnen</a>
+          </p>
+          <p class="note" style="margin-top:10px;">Wenn du unbedingt die Seite in deiner Domain anzeigen willst, ist eine serverseitige Proxy-Lösung notwendig (siehe Hinweise weiter unten).</p>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <p class="note">Hinweis: Wenn die Einbettung nicht funktioniert, klicke auf den Button oben, um die Seite direkt zu öffnen.</p>
+      <ul class="note">
+        <li>Grund: Manche Seiten setzen <code>X-Frame-Options: DENY</code> oder CSP, das Einbetten verbietet.</li>
+        <li>Serverseitiger Workaround: Du könntest einen einfachen Proxy (z. B. Node/Express) verwenden, der die Seite serverseitig abruft und dann an den Browser liefert. Achte dabei auf rechtliche/AGB- und Sicherheitsaspekte.</li>
+      </ul>
+    </section>
+
+    <footer>
+      © Beispielframe — URL: <code>revolut.com/referral/?referral-code=viktorx5iz!NOV1-25-VR-DE&geo-redirect</code>
+    </footer>
+  </main>
+
+  <script>
+    // Fallback-Anzeige: wir versuchen nach kurzer Zeit festzustellen, ob das iframe sichtbar geladen hat.
+    (function(){
+      const iframe = document.getElementById('embedFrame');
+      const fallback = document.getElementById('fallback');
+      const openLink = document.getElementById('openLink');
+      const targetUrl = iframe.getAttribute('src');
+
+      // Setze Link für Fallback-Button
+      openLink.href = targetUrl;
+
+      // Manche Browser feuern onload auch wenn embedding blockiert; wir verwenden eine kleine Heuristik:
+      // Wenn das iframe nach 1.2s noch "blank" erscheint (height 0 oder kein sichtbarer content), zeigen wir die Fallback-Box.
+      let fallbackShown = false;
+      function showFallback() {
+        if (fallbackShown) return;
+        fallbackShown = true;
+        fallback.classList.add('visible');
+      }
+
+      // Versuche aufload abzuwarten
+      iframe.addEventListener('load', () => {
+        // Versuch, auf cross-origin content zuzugreifen (wird fehlschlagen, aber wir fangen es)
+        try {
+          const doc = iframe.contentDocument || iframe.contentWindow.document;
+          // Falls wir Zugriff haben und Body leer ist, dann wahrscheinlich ein Problem
+          if (!doc || !doc.body || doc.body.innerHTML.trim().length === 0) {
+            showFallback();
+          }
+        } catch (e) {
+          // Cross-origin Zugriff schlägt normalerweise fehl -> iframe wurde geladen, aber wir können nichts prüfen.
+          // Trotzdem: viele Seiten verhindern Darstellung; daher prüfen wir zusätzlich via BoundingClientRect.
+          setTimeout(() => {
+            const rect = iframe.getBoundingClientRect();
+            if (rect.width < 20 || rect.height < 20) showFallback();
+            // wir zeigen Fallback nicht automatisch falls iframe sichtbar ist
+          }, 300);
+        }
+      });
+
+      // Timeout: nach 1.5s Fallback zeigen (falls nichts gutes passiert)
+      setTimeout(() => {
+        const rect = iframe.getBoundingClientRect();
+        if (rect.width < 20 || rect.height < 20) {
+          showFallback();
+        } else {
+          // Falls iframe sichtbar ist, aber vielleicht blank bleibt, dennoch prüfen:
+          try {
+            const doc = iframe.contentDocument || iframe.contentWindow.document;
+            if (!doc || !doc.body || doc.body.innerHTML.trim().length === 0) {
+              showFallback();
+            }
+          } catch (e) {
+            // Cross-origin -> wir gehen davon aus, dass es eventuell funktioniert; nichts tun
+          }
+        }
+      }, 1500);
+    })();
+  </script>
+</body>
+</html>
