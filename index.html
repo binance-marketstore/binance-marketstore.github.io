@@ -4,121 +4,103 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Binance Refer & Earn</title>
-
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
       background: #0B0E11;
       color: #EAECEF;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
       text-align: center;
     }
-
     .wrapper {
-      max-width: 760px;
-      padding: 26px;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 32px 16px;
     }
-
-    .logo {
-      width: 110px;
-      height: 110px;
-      margin-bottom: 18px;
-      background: #F3BA2F;
-      border-radius: 12px;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      color: #0B0E11;
-      font-size: 24px;
-      font-weight: 900;
+    .logo img {
+      max-width: 140px;
+      height: auto;
+      margin-bottom: 24px;
     }
-
-    .hero-img {
-      width: 100%;
-      height: 200px;
-      background: #1D2125;
-      border-radius: 14px;
-      margin: 24px 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 18px;
-      color: #828C9A;
-    }
-
     h1 {
-      font-size: 30px;
-      margin-bottom: 12px;
+      font-size: 32px;
       color: #F3BA2F;
-      font-weight: 700;
+      margin: 16px 0;
     }
-
     p {
       font-size: 18px;
-      line-height: 1.55;
+      line-height: 1.5;
       color: #C2C5CB;
-      margin-bottom: 32px;
+      margin-bottom: 30px;
     }
-
-    .cta {
+    .hero-img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      overflow: hidden;
+    }
+    .hero-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .cta-btn {
       display: inline-block;
-      padding: 16px 28px;
       background: #F3BA2F;
       color: #0B0E11;
-      border-radius: 10px;
+      padding: 18px 32px;
       font-size: 20px;
       font-weight: 700;
       text-decoration: none;
-      transition: 0.3s;
+      border-radius: 10px;
+      transition: transform .3s, box-shadow .3s;
+      margin-bottom: 30px;
     }
-
-    .cta:hover {
+    .cta-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 28px rgba(243,186,47,0.35);
+      box-shadow: 0 12px 28px rgba(243,186,47,0.35);
     }
-
+    .qr-code {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 24px;
+    }
     footer {
-      margin-top: 36px;
       font-size: 14px;
       color: #828C9A;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
 
   <div class="wrapper">
-
-    <!-- Platzhalter: Hier kannst du echtes Binance Logo einfügen -->
-    <div class="logo">B</div>
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Binance_Logo.svg" alt="Binance Logo">
+    </div>
 
     <h1>Binance Refer & Earn</h1>
 
     <p>Hol dir exklusive Vorteile bei Binance. Registriere dich über meinen persönlichen Einladungslink und sammle gemeinsam mit mir Rewards in USDC.</p>
 
-    <!-- Platzhalter für ein cooles Krypto/Chart/Binance Motiv -->
     <div class="hero-img">
-      Bild wird hier angezeigt
+      <img src="https://cdn.wallpapersafari.com/34/0/TIf9dg.jpg" alt="Binance Trading Screen">
     </div>
 
-    <a class="cta" href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_19C8Z&utm_source=default"
-       target="_blank" rel="noopener noreferrer">
+    <a class="cta-btn" href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_19C8Z&utm_source=default" target="_blank" rel="noopener noreferrer">
       Jetzt anmelden & verdienen
     </a>
 
-    <!-- Zweites Bild für Angebote, Coins etc. -->
-    <div class="hero-img" style="margin-top: 36px;">
-      Zweites Bild hier rein
+    <div class="qr-code">
+      <!-- QR Code Bild hier einfügen -->
+      <img src="qr-code.png" alt="QR-Code zur Registrierung">
     </div>
 
     <footer>
       Empfehlungscode: <strong>GRO_28502_19C8Z</strong>
     </footer>
-
   </div>
 
 </body>
