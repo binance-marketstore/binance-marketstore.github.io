@@ -18,40 +18,6 @@
     </style>
   </head>
   <body>
-    <div class="wrap">
-      <header>
-        <strong>Embedded Binance Referral</strong> — Wenn Einbetten nicht erlaubt ist, benutze den Link.
-      </header><main>
-    <!-- Zielseite: Falls die Seite das Einbetten per X-Frame-Options oder CSP verhindert, wird der Fallback sichtbar -->
-    <iframe id="targetFrame" src="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_19C8Z&utm_source=default" title="Binance Referral"></iframe>
-
-    <div id="fallback" class="fallback hidden">
-      <div class="notice">
-        <div>Diese Seite konnte nicht eingebettet werden oder das Einbetten ist auf der Zielseite blockiert.</div>
-        <div style="margin-top:10px">Öffne stattdessen direkt die Seite:</div>
-        <div style="margin-top:12px">
-          <a class="button" href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_19C8Z&utm_source=default" target="_blank" rel="noopener noreferrer">Binance Referral öffnen</a>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <script>
-    // Einfacher Heuristik-Check: wenn nach 2.5s kein sichtbares iframe-Inhalt geladen scheint, zeigen wir den Fallback.
-    // Hinweis: Manche Browser/Seiten lassen sich nicht zuverlässig erkennen (cross-origin), deshalb ist das nur eine Hilfestellung.
-    const iframe = document.getElementById('targetFrame');
-    const fallback = document.getElementById('fallback');
-    let loaded = false;
-
-    iframe.addEventListener('load', () => { loaded = true; });
-
-    setTimeout(() => {
-      if (!loaded) {
-        fallback.classList.remove('hidden');
-      }
-    }, 2500);
-  </script>
-</div>
-
-  </body>
+  <iframe src="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_19C8Z&utm_source=default" style="width:100%; height:100%; border:0;" allowfullscreen></iframe>
+</body>
 </html>
